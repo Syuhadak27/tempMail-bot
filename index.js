@@ -59,7 +59,8 @@ async function handleTelegramUpdate(update, env) {
     return hapusEmail(chatId, email, env);
   }
 
-  return sendMessage(chatId, "❓ Perintah tidak dikenal. Gunakan /start untuk melihat daftar perintah.");
+   return new Response('OK', { status: 200 });
+  //return sendMessage(chatId, "❓ Perintah tidak dikenal. Gunakan /start untuk melihat daftar perintah.");
 }
 async function buatEmail(chatId, userName, env) {
     try {
