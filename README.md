@@ -126,54 +126,54 @@ Berikut daftar perintah yang bisa digunakan:
 
 1️⃣ Membuat email baru:
 
-/buat_email
+<pre>/buat_email
 
 Bot akan membalas:
 
 ✅ Email berhasil dibuat:  
 📧 Email: <code>nama-random@mail.tm</code>  
 Gunakan perintah:  
-📩 /baca_email nama-random@mail.tm
+📩 /baca_email nama-random@mail.tm</pre>
 
 2️⃣ Membaca pesan masuk:
 
-/baca_email nama-random@mail.tm
+<pre>/baca_email nama-random@mail.tm
 
 Bot akan membalas jika ada pesan:
 
 📩 Pesan Baru di Email:  
 📝 Dari: example@mail.com  
 📌 Subjek: Selamat datang!  
-📜 Isi: Ini adalah email uji coba.
+📜 Isi: Ini adalah email uji coba.</pre>
 
 3️⃣ Menghapus email:
 
-/hapus nama-random@mail.tm
+<pre>/hapus nama-random@mail.tm
 
 Bot akan membalas:
 
-✅ Email nama-random@mail.tm berhasil dihapus.
+✅ Email nama-random@mail.tm berhasil dihapus.</pre>
 
 4️⃣ Mendapatkan token email:
 
-/token nama-random@mail.tm
+<pre>/token nama-random@mail.tm
 
 Bot akan membalas:
 
 🔑 Token untuk email nama-random@mail.tm:  
-<code>abcdefgh123456789</code>
+<code>abcdefgh123456789</code></pre>
 
 5️⃣ Menggunakan token untuk membaca inbox:
 
-/get abcdefgh123456789
+<pre>/get abcdefgh123456789
 
-Bot akan membalas dengan pesan terbaru dari inbox.
+Bot akan membalas dengan pesan terbaru dari inbox.</pre>
 
 6️⃣ Menyimpan token dan email ke dalam bentuk file.txt :
 
-/save
+<pre>/save
 
-Bot akan membalas dengan file bernama Backup_username_today.txt
+Bot akan membalas dengan file bernama Backup_username_today.txt</pre>
 
 
 ---
