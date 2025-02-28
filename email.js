@@ -85,7 +85,7 @@ export async function listEmails(chatId, env) {
 
     let emailList = "📧 Daftar Email Anda:\n";
     for (const email of userEmails) {
-        emailList += `𝐑 <code>/baca_email ${email}</code>\n❌<code>/hapus ${email}</code>\n`;
+        emailList += `Email mu : <code>${email}</code>\n<blockquote>✳️Untuk melihat pesan\n<code>/baca_email ${email}</code>\n\❌Untuk menghapus email\n<code>/hapus ${email}</code></blockquote>\n\n`;
     }
 
     return sendMessage(chatId, emailList);
