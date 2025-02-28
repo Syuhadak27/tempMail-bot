@@ -55,28 +55,47 @@ export const WEBHOOK_URL = "https://your-cloudflare-worker-url/webhook";
 
 4️⃣ Deploy ke Cloudflare Workers
 
-Edit wrangler.toml untuk menyesuaikan pengaturan Cloudflare:
+```sh
+wrangler init temp-mail
+```
+Pilih javascript - worker Hello word
+
+Edit wrangler.jsonc atau wrangler.json untuk menyesuaikan pengaturan Cloudflare:
 
 ```sh
-name = "bot-email-temporary"
-type = "javascript"
-account_id = "your-cloudflare-account-id"
-workers_dev = true
+{
+	"name": "temp-mail",
+	"main": "src/index.js",
+	"compatibility_date": "2025-02-27",
+	"observability": {
+		"enabled": true,
+	},
+	"kv_namespaces": [
+    {
+      "binding": "EMAIL",
+      "id": "ID DARI KV NAMESPACE"
+    }
+  ]
+}
+
 ```
 Jalankan perintah:
 
 ```sh
-wrangler publish
+wrangler deploy
 ```
 
 5️⃣ Set Webhook
 
 Jalankan perintah ini untuk menghubungkan bot dengan Cloudflare Workers:
-
+**Via Terminal**
 ```sh
 curl -X POST "https://api.telegram.org/bot<YOUR_BOT_TOKEN>/setWebhook?url=<YOUR_WORKER_URL>/webhook"
 ```
-
+**Via Web browser**
+```sh
+https://your-worker-web.dev/setWebhook
+```
 ---
 
 ## 📜 Perintah Bot  
