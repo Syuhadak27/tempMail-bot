@@ -79,7 +79,11 @@ Edit wrangler.jsonc atau wrangler.json untuk menyesuaikan pengaturan Cloudflare:
 }
 
 ```
-Jalankan perintah:
+Jalankan perintah utk deploy
+
+```sh
+cd temp-mail/src
+```
 
 ```sh
 wrangler deploy
