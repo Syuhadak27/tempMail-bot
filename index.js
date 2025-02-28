@@ -1,5 +1,6 @@
 import { BOT_TOKEN, WEBHOOK_URL } from "./config.js"; 
 import { buatEmail, cekInbox, listEmails, hapusEmail, sendMessage, getToken, cekInboxDariToken } from "./email.js";
+import { handleSaveCommand } from "./telegram.js";
 const API_URL = `https://api.telegram.org/bot${BOT_TOKEN}`;
 
 export default {
@@ -47,6 +48,12 @@ async function handleTelegramUpdate(update, env) {
     const userName = update.message.from.username || update.message.from.first_name || `SetUsername_${chatId}`;
     return buatEmail(chatId, userName, env);
   }
+  
+  if (text === "/save") {
+    const userName = update.message.from.username || `User${chatId}`;
+    return handleSaveCommand(chatId, env, userName);
+  }
+  
   if (text.startsWith("/token")) {
     const args = text.split(" ");
     
