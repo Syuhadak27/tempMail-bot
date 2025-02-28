@@ -182,12 +182,11 @@ Bot akan membalas dengan file bernama Backup_username_today.txt</pre>
 
 📝 MIT License – Gunakan dan modifikasi bebas.
 
-
 ---
+👥 Mirror Group
+[Grup Mirror](https://t.me/syd_download)
 
-🚀 Mulai gunakan bot ini sekarang dan kelola email sementara langsung dari Telegram!
-
----
 👤Owner
+
 [Telegram](https://t.me/hidestream_bot)
 
