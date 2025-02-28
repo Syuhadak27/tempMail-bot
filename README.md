@@ -8,8 +8,9 @@ Bot ini memungkinkan Anda untuk membuat **email sementara**, membaca inbox, dan 
 ✅ **Lihat daftar email yang dibuat**  
 ✅ **Hapus email**  
 ✅ **Ambil token email**  
-✅ **Akses inbox langsung dengan token**
-✅ **Menyimpan email dan token ke bentuk file.txt**
+✅ **Akses inbox langsung dengan token**  
+✅  **Menyimpan email dan token ke bentuk file.txt**
+
 
 
 ---
