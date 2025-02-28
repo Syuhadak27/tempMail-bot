@@ -154,4 +154,5 @@ Bot akan membalas dengan pesan terbaru dari inbox.
 🚀 Mulai gunakan bot ini sekarang dan kelola email sementara langsung dari Telegram!
 
 ---
+👤 [Telegram](https://t.me/hidestream_bot)
 
