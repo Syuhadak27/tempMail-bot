@@ -77,7 +77,19 @@ curl -X POST "https://api.telegram.org/bot<YOUR_BOT_TOKEN>/setWebhook?url=<YOUR_
 
 ---
 
-📜 Perintah Bot
+## 📜 Perintah Bot  
+
+Berikut daftar perintah yang bisa digunakan:  
+
+| Perintah          | Fungsi                                         |
+|------------------|----------------------------------------------|
+| `/start`        | Memulai bot dan melihat daftar perintah       |
+| `/buat_email`   | Membuat email sementara baru                 |
+| `/baca_email <email>` | Cek pesan masuk dari email            |
+| `/list`         | Melihat daftar email yang dibuat             |
+| `/hapus <email>` | Menghapus email dari database               |
+| `/token <email>` | Menampilkan token autentikasi untuk email   |
+| `/get <token>`  | Mengambil inbox berdasarkan token            |
 
 
 ---
