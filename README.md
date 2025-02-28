@@ -183,10 +183,11 @@ Bot akan membalas dengan file bernama Backup_username_today.txt</pre>
 📝 MIT License – Gunakan dan modifikasi bebas.
 
 ---
-👥 Mirror Group
+👥 Mirror Group   |
 [Grup Mirror](https://t.me/syd_download)
 
-👤Owner
-
+👤Owner    |
 [Telegram](https://t.me/hidestream_bot)
+
+
 
