@@ -1,0 +1,145 @@
+
+# 🚀 Bot Telegram - Email Temporary  
+Bot ini memungkinkan Anda untuk membuat **email sementara**, membaca inbox, dan mengelola email langsung melalui **Telegram** menggunakan API dari **mail.tm**.  
+
+## 📌 Fitur  
+✅ **Buat email sementara**  
+✅ **Cek pesan masuk**  
+✅ **Lihat daftar email yang dibuat**  
+✅ **Hapus email**  
+✅ **Ambil token email**  
+✅ **Akses inbox langsung dengan token**  
+
+---
+
+## ⚙️ Persyaratan  
+Sebelum menjalankan bot ini, pastikan Anda memiliki:  
+
+- ✅ **Cloudflare Workers** (untuk menjalankan kode bot)  
+- ✅ **Bot Telegram** dengan **BOT_TOKEN**  
+- ✅ **Webhook aktif** untuk menerima perintah dari Telegram  
+- ✅ **Akses ke API mail.tm**  
+
+---
+
+## 🚀 Cara Instalasi  
+
+### 1️⃣ **Clone Repository**  
+```sh
+git clone https://github.com/username/bot-email-temporary.git  
+cd bot-email-temporary
+```
+
+2️⃣ Buat Bot Telegram & Dapatkan Token
+
+1. Buka @BotFather di Telegram
+
+
+2. Gunakan perintah /newbot dan ikuti instruksi
+
+
+3. Simpan BOT_TOKEN yang diberikan oleh BotFather
+
+
+
+3️⃣ Konfigurasi
+
+Buat file config.js dan tambahkan variabel berikut:
+
+```sh
+export const BOT_TOKEN = "your-telegram-bot-token";
+export const WEBHOOK_URL = "https://your-cloudflare-worker-url/webhook";
+```
+
+4️⃣ Deploy ke Cloudflare Workers
+
+Edit wrangler.toml untuk menyesuaikan pengaturan Cloudflare:
+
+```sh
+name = "bot-email-temporary"
+type = "javascript"
+account_id = "your-cloudflare-account-id"
+workers_dev = true
+```
+Jalankan perintah:
+
+```sh
+wrangler publish
+```
+
+5️⃣ Set Webhook
+
+Jalankan perintah ini untuk menghubungkan bot dengan Cloudflare Workers:
+
+```sh
+curl -X POST "https://api.telegram.org/bot<YOUR_BOT_TOKEN>/setWebhook?url=<YOUR_WORKER_URL>/webhook"
+```
+
+---
+
+📜 Perintah Bot
+
+
+---
+
+🎯 Contoh Penggunaan
+
+1️⃣ Membuat email baru:
+
+/buat_email
+
+Bot akan membalas:
+
+✅ Email berhasil dibuat:  
+📧 Email: <code>nama-random@mail.tm</code>  
+Gunakan perintah:  
+📩 /baca_email nama-random@mail.tm
+
+2️⃣ Membaca pesan masuk:
+
+/baca_email nama-random@mail.tm
+
+Bot akan membalas jika ada pesan:
+
+📩 Pesan Baru di Email:  
+📝 Dari: example@mail.com  
+📌 Subjek: Selamat datang!  
+📜 Isi: Ini adalah email uji coba.
+
+3️⃣ Menghapus email:
+
+/hapus nama-random@mail.tm
+
+Bot akan membalas:
+
+✅ Email nama-random@mail.tm berhasil dihapus.
+
+4️⃣ Mendapatkan token email:
+
+/token nama-random@mail.tm
+
+Bot akan membalas:
+
+🔑 Token untuk email nama-random@mail.tm:  
+<code>abcdefgh123456789</code>
+
+5️⃣ Menggunakan token untuk membaca inbox:
+
+/get abcdefgh123456789
+
+Bot akan membalas dengan pesan terbaru dari inbox.
+
+
+---
+
+🎯 Lisensi
+
+📝 MIT License – Gunakan dan modifikasi bebas.
+
+
+---
+
+🚀 Mulai gunakan bot ini sekarang dan kelola email sementara langsung dari Telegram!
+
+---
+
