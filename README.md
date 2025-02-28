@@ -27,8 +27,10 @@ Sebelum menjalankan bot ini, pastikan Anda memiliki:
 ### 1️⃣ **Clone Repository**  
 ```sh
 git clone https://github.com/Syuhadak27/tempMail-bot.git
-cd bot-email-temporary
 ```
+rename <code>config-SAMPLE.js</code> ke <code>config.js</code>
+
+Pindahkan file <code>index.js , email.js , config.js</code> ke folder project/src
 
 2️⃣ Buat Bot Telegram & Dapatkan Token
 
