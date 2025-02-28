@@ -26,7 +26,7 @@ Sebelum menjalankan bot ini, pastikan Anda memiliki:
 
 ### 1️⃣ **Clone Repository**  
 ```sh
-git clone https://github.com/username/bot-email-temporary.git  
+git clone https://github.com/Syuhadak27/tempMail-bot.git
 cd bot-email-temporary
 ```
 
