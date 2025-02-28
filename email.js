@@ -8,7 +8,7 @@ export async function buatEmail(chatId, userName, env) {
         const domainData = await domainRes.json();
         const domain = domainData["hydra:member"][0]?.domain || "mail.tm";
 
-        const namaHari = getRandomHari();
+        const namaHari = generateCoolEmail();
         const email = `${namaHari}${Date.now()}@${domain}`;
         const password = "Rahasia123";
 
@@ -67,7 +67,7 @@ export async function cekInbox(chatId, email, env) {
     });
 
     const msgDetail = await msgDetailRes.json();
-    const responseText = `📩 Pesan Baru di Email:\n📝 Dari: ${msgDetail.from.address}\n📌 Subjek: ${msgDetail.subject}\n📜 Isi:\n${msgDetail.text}`;
+    const responseText = `📩 Pesan Baru di Email:\n📝 Dari: ${msgDetail.from.address}\n📌 Subjek: <b>${msgDetail.subject}</b>\n📜 Isi:\n${msgDetail.text}`;
 
     return sendMessage(chatId, responseText);
   } catch (error) {
@@ -118,12 +118,6 @@ export async function hapusEmail(chatId, email, env) {
     return listEmails(chatId, env); // Tampilkan daftar terbaru
 }
 
-const hari = ["minggu", "senin", "selasa", "rabu", "kamis", "jumat", "sabtu"];
-function getRandomHari() {
-  return hari[Math.floor(Math.random() * hari.length)];
-}
-
-
 export async function sendMessage(chatId, text) {
   const res = await fetch(`${API_URL}/sendMessage`, {
     method: "POST",
@@ -136,3 +130,68 @@ export async function sendMessage(chatId, text) {
 
   return new Response("OK", { status: 200 });
 }
+
+export async function getToken(chatId, email, env) {
+    const token = await env.EMAIL.get(email); // Ambil token dari KV storage
+
+    if (!token) {
+        return sendMessage(chatId, "❌ Token tidak ditemukan. Pastikan email sudah dibuat dengan bot ini.");
+    }
+
+    return sendMessage(chatId, `🔑 Token untuk email <code>${email}</code>:\n<code>${token}</code>`, true);
+}
+
+export async function cekInboxDariToken(chatId, token) {
+    try {
+        const inboxRes = await fetch("https://api.mail.tm/messages", {
+            headers: { Authorization: `Bearer ${token}` },
+        });
+
+        const inboxData = await inboxRes.json();
+        if (!inboxData["hydra:member"] || inboxData["hydra:member"].length === 0) {
+            return sendMessage(chatId, "📭 Tidak ada pesan baru di email.");
+        }
+
+        const latestMsg = inboxData["hydra:member"][0]; // Ambil pesan terbaru
+        const msgDetailRes = await fetch(`https://api.mail.tm/messages/${latestMsg.id}`, {
+            headers: { Authorization: `Bearer ${token}` },
+        });
+
+        const msgDetail = await msgDetailRes.json();
+        const responseText = `📩 Pesan Baru di Email:\n📝 Dari: ${msgDetail.from.address}\n📌 Subjek: <b>${msgDetail.subject}</b>\n📜 Isi:\n${msgDetail.text}`;
+
+        return sendMessage(chatId, responseText);
+    } catch (error) {
+        return sendMessage(chatId, "❌ Gagal mengambil inbox: " + error.message);
+    }
+}
+
+
+const hari = ["minggu", "senin", "selasa", "rabu", "kamis", "jumat", "sabtu"];
+function getRandomHari() {
+  return hari[Math.floor(Math.random() * hari.length)];
+}
+
+
+const bulanSatelit = [
+  "bulan", "raka", "europa", "ganymede", "titan", 
+  "callisto", "phobos", "deimos", "io", "triton"
+];
+
+const hewanJawa = [
+  "celeng", "kebo", "singo", "ular", "gajah", 
+  "menthog", "garangan", "kucing", "cendrawasih"
+];
+
+function getRandomElement(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function generateCoolEmail() {
+  const randomBulan = getRandomElement(bulanSatelit);
+  const randomHewan = getRandomElement(hewanJawa);
+  return `${randomBulan}-${randomHewan}-`;
+}
+
+console.log(generateCoolEmail());  
+// Contoh output: europa.singo, titan.kebo, io.menthog, ganymede.celeng

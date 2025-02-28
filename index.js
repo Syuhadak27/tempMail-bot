@@ -1,5 +1,5 @@
 import { BOT_TOKEN, WEBHOOK_URL } from "./config.js"; 
-import { buatEmail, cekInbox, listEmails, hapusEmail, sendMessage } from "./email.js";
+import { buatEmail, cekInbox, listEmails, hapusEmail, sendMessage, getToken, cekInboxDariToken } from "./email.js";
 const API_URL = `https://api.telegram.org/bot${BOT_TOKEN}`;
 
 export default {
@@ -35,15 +35,38 @@ async function handleTelegramUpdate(update, env) {
       chatId,
       "👋 Selamat datang di Bot Email Temporary!\n\nGunakan perintah berikut:\n" +
       "📧 /buat_email → Buat email sementara\n" +
-      "📩 /baca_email emailmu → Cek pesan masuk\n" +
+      "📩 /baca_email (emailmu) → Cek pesan masuk\n" +
       "📜 /list → Lihat daftar email\n" +
-      "❌ /hapus emailmu → Hapus email yang sudah dibuat\n\nSilakan coba!"
+      "❌ /hapus (emailmu) → Hapus email yang sudah dibuat\n" +
+      "💥 /token (emailmu) → Untuk melihat token dari emailmu \n" +
+      "✈️ /get (emailmu) → untuk melihat inbox dg token\n\n Silakan coba!"
     );
   }
 
   if (text.startsWith("/buat_email")) {
     const userName = update.message.from.username || update.message.from.first_name || `SetUsername_${chatId}`;
     return buatEmail(chatId, userName, env);
+  }
+  if (text.startsWith("/token")) {
+    const args = text.split(" ");
+    
+    if (args.length < 2) {
+        return sendMessage(chatId, "⚠ Harap masukkan email yang ingin dilihat tokennya. Contoh: `/token email@example.com`", true);
+    }
+
+    const email = args[1];
+    return getToken(chatId, email, env);
+  }
+  
+  if (text.startsWith("/get")) {
+    const args = text.split(" ");
+
+    if (args.length < 2) {
+        return sendMessage(chatId, "⚠ Harap masukkan token yang ingin digunakan. Contoh: `/get (token)`", true);
+    }
+
+    const token = args[1];
+    return cekInboxDariToken(chatId, token);
   }
 
   //if (text.startsWith("/baca_email ")) {
