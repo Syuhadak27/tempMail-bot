@@ -8,7 +8,9 @@ Bot ini memungkinkan Anda untuk membuat **email sementara**, membaca inbox, dan 
 ✅ **Lihat daftar email yang dibuat**  
 ✅ **Hapus email**  
 ✅ **Ambil token email**  
-✅ **Akses inbox langsung dengan token**  
+✅ **Akses inbox langsung dengan token**
+✅ **Menyimpan email dan token ke bentuk file.txt**
+
 
 ---
 
@@ -115,6 +117,7 @@ Berikut daftar perintah yang bisa digunakan:
 | `/hapus <email>` | Menghapus email dari database               |
 | `/token <email>` | Menampilkan token autentikasi untuk email   |
 | `/get <token>`  | Mengambil inbox berdasarkan token            |
+| `/save`         | Menyimpan email dan token ke bentuk file.txt      |
 
 
 ---
@@ -165,6 +168,12 @@ Bot akan membalas:
 /get abcdefgh123456789
 
 Bot akan membalas dengan pesan terbaru dari inbox.
+
+6️⃣ Menyimpan token dan email ke dalam bentuk file.txt :
+
+/save
+
+Bot akan membalas dengan file bernama Backup_username_today.txt
 
 
 ---
